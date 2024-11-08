@@ -1,0 +1,10 @@
+.carousel{
+    margin: 30px 0 30px 0;
+}
+.carousel-item img {
+    max-height: 300px; 
+    object-fit: cover; 
+  }
+  #carouselExampleIndicators {
+    max-height: 300px; 
+  }

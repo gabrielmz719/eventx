@@ -1,2 +1,2 @@
-# eventx
-Site para eventos educacionais 
+# Eventx
+Site para criação de eventos educacionais 

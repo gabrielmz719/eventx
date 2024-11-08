@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventx - Perfil</title>
+  <!-- Adicionando Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <%- include('navbar.ejs') %>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title">Perfil de <%= user.username %></h1>
+            <h2>Eventos Criados</h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Título do Evento</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% userEvents.forEach(event => { %>
+                  <tr>
+                    <td><%= event.title %></td>
+                    <td>
+                      <a href="/events/<%= event._id %>" class="btn btn-info btn-sm">Ver Evento</a>
+                      <a href="/events/<%= event._id %>/edit" class="btn btn-primary btn-sm">Editar</a>
+                      <form action="/events/<%= event._id %>/delete" method="POST" style="display: inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+            <h2>Eventos Cadastrados</h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Título do Evento</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% registeredEvents.forEach(event => { %>
+                  <tr>
+                    <td><%= event.title %></td>
+                    <td><a href="/events/<%= event._id %>" class="btn btn-info btn-sm">Ver Evento</a></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('vlibras.ejs') %>
+  <!-- Adicionando Bootstrap JS e dependências -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

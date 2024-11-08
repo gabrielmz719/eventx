@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventx - Detalhes do Evento</title>
+  <!-- Adicionando Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Adicionando estilo personalizado -->
+  <link rel="stylesheet" href="./stylesheets/style.css">
+  <style>
+    /* Estilo adicional para a imagem */
+    .fixed-image {
+      max-width: 100%; /* Utiliza toda a largura disponível */
+      height: auto; /* Mantém a proporção da imagem */
+      border-radius: 5px; /* Borda arredondada para a imagem */
+      margin-bottom: 20px; /* Espaçamento inferior */
+    }
+    .card-body {
+      padding: 20px; /* Espaçamento interno */
+    }
+    .btn-margin {
+      margin-left: 10px; /* Espaçamento entre botões */
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegação -->
+  <%- include('navbar.ejs') %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <!-- Imagem de capa do evento -->
+          <img src="/uploads/<%= event.coverImage %>" class="card-img-top fixed-image" alt="Imagem de Capa do Evento">
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><strong>Tipo:</strong> <%= event.type %></p>
+            <p class="card-text"><strong>Descrição:</strong> <%= event.description %></p>
+            <p class="card-text"><strong>Data:</strong> <%= event.date.toDateString() %></p>
+            <!-- <p class="card-text"><strong>Criado por:</strong> <%= event.organizer.name %></p>  -->
+            
+            <% if (userId) { %>
+              <% if (event.participants.some(participant => participant.user.equals(userId))) { %>
+                <form action="/events/<%= event._id %>/unregister" method="POST" class="float-right">
+                  <button type="submit" class="btn btn-danger btn-margin">Cancelar Inscrição</button>
+                </form>
+              <% } else { %>
+                <!-- Botão para registrar-se no evento -->
+                <form action="/events/<%= event._id %>/register" method="POST" class="float-right">
+                  <button type="submit" class="btn btn-primary btn-margin">Registrar-se para este evento</button>
+                </form>
+              <% } %>
+            <% } else { %>
+              <!-- Mensagem de login necessário -->
+              <p>Para registrar-se neste evento, <a href="/login">faça login</a>.</p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rodapé ou outros conteúdos incluídos -->
+  <%- include('vlibras.ejs') %>
+  
+  <!-- Scripts do Bootstrap (opcional, dependendo do uso) -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <style>
+        .container-create {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('navbar.ejs', { userId: userId }) %>
+
+        <div class="container-create">
+            <h1 class="text-center mb-4">Criar Evento</h1>
+            <form action="/events/create" method="POST" enctype="multipart/form-data" class="border p-4">
+                <div class="form-group">
+                    <label for="title">Título:</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Tipo:</label>
+                    <select id="type" name="type" class="form-control">
+                        <option value="presencial">Evento presencial</option>
+                        <option value="online">Evento online</option>
+                        <!-- Adicione outras opções conforme necessário -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Descrição do evento:</label>
+                    <textarea id="description" name="description" rows="4" class="form-control" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Data:</label>
+                    <input type="date" id="date" name="date" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="coverImage">Imagem do evento:</label>
+                    <input type="file" id="coverImage" name="coverImage" class="form-control-file" accept="image/*">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Criar Evento</button>
+            </form>
+        </div>
+
+        <%- include('vlibras.ejs') %>
+
+            <!-- Bootstrap JavaScript e jQuery (opcional) -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src=

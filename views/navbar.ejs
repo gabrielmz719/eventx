@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1E90FF;">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center mr-auto" href="/">
+      <span style="color: white; font-size: 1.5rem;">EventX</span> <!-- Aumentar o tamanho da fonte do texto -->
+
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active mr-3">
+          <a class="nav-link" href="/" style="color: white; font-size: 1.2rem;">Inicio <span class="sr-only">(current)</span></a> <!-- Aumentar o tamanho da fonte do link -->
+        </li>
+        <% if (userId) { %>
+          <li class="nav-item mr-3">
+            <a class="nav-link btn btn-primary btn-lg" href="/events/create" role="button" style="color: white; background-color: rgb(35, 250, 7);">Criar evento</a> <!-- Utilizar btn-lg para aumentar o tamanho do botão -->
+          </li>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="/profile" style="color: white; font-size: 1.2rem;">Perfil</a> <!-- Aumentar o tamanho da fonte do link -->
+          </li>
+        <% } %>
+
+        
+
+        <% if (userId) { %>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="/logout" style="color: white; font-size: 1.2rem;">Sair</a> <!-- Aumentar o tamanho da fonte do link -->
+          </li>
+        <% } else { %>
+          <li class="nav-item mr-3">
+            <a class="nav-link" href="/users/register" style="color: white; font-size: 1.2rem;">Registrar</a> <!-- Aumentar o tamanho da fonte do link -->
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
