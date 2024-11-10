@@ -21,29 +21,11 @@
 
   <%- include('navbar.ejs') %>
 <main>
-  <div style="margin-top: 20px;"></div>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="max-width: 800px; margin: 0 auto;"> <!-- Definindo largura máxima e centralizando -->
-    <ol class="carousel-indicators">
-      <% events.forEach((event, index) => { %>
-        <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" <% if (index === 0) { %>class="active"<% } %>></li>
-      <% }); %>
-    </ol>
-    <div class="carousel-inner">
-      <% events.forEach((event, index) => { %>
-        <div class="carousel-item <% if (index === 0) { %>active<% } %>">
-          <img src="/uploads/<%= event.coverImage %>" class="d-block w-100" alt="...">
-        </div>
-      <% }); %>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Anterior</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Próximo</span>
-    </a>
-</div>
+  <div class="slide">
+    <h1>Título do Slide</h1>
+    <p class="description">Esta é uma breve descrição abaixo do título.</p>
+    <a href="#" class="signup-link">Inscreva-se</a>
+  </div>
  
 <h1 class="title-margin">Nossos Eventos</h1>
 <div class="container">
