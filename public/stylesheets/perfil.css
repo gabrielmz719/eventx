@@ -1,37 +1,184 @@
-body {
-    background-color: #f8f9fa;
-  }
-  
-  h1, h2 {
-    color: #343a40;
-  }
-  
-  .card {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin-top: 20px;
-  }
-  
-  .table thead th {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
-  }
-  
-  .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
-  }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-  }
+
+/* Cor dos títulos */
+h1, h2 {
+  color: #343a40; /* Cor escura para melhor legibilidade */
+  margin-bottom: 20px; /* Aumenta o espaçamento abaixo dos títulos */
+}
+
+/* Cartões (Card) */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  border-radius: 8px; /* Cantos arredondados para um visual mais suave */
+  padding: 20px; /* Adiciona padding interno para não deixar o conteúdo tão apertado */
+  background-color: white; /* Garantir que o fundo do card seja branco */
+}
+
+/* Títulos dentro do card */
+.card-title {
+  font-size: 2rem; /* Tamanho de fonte maior para o título */
+  font-weight: bold;
+  margin-bottom: 15px; /* Aumenta o espaçamento abaixo do título */
+}
+
+/* Subtítulos dentro do card */
+h2 {
+  font-size: 1.5rem; /* Tamanho de fonte moderado para subtítulos */
+  margin-bottom: 15px; /* Espaçamento abaixo do subtítulo */
+}
+
+/* Estilo da tabela */
+.table thead th {
+  background-color: #007bff; /* Cor do cabeçalho azul */
+  color: white; /* Texto branco */
+  font-weight: bold; /* Deixa o texto mais destacado */
+  padding: 12px; /* Adiciona mais espaço dentro das células de cabeçalho */
+}
+
+/* Estilo das células da tabela */
+.table td, .table th {
+  padding: 12px; /* Mais espaçamento interno para as células da tabela */
+  vertical-align: middle; /* Alinha o texto verticalmente no meio */
+}
+
+/* Botões de ação */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Ajustando o fundo da tabela para maior contraste */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2; /* Cor alternada para as linhas */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #ffffff; /* Linha branca */
+}
+
+/* Estilo de links nos botões */
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+/* Estilo geral do conteúdo da página */
+.container {
+  padding: 20px;
+  max-width: 1200px; /* Limita a largura para não deixar o conteúdo muito esticado */
+  margin: 0 auto; /* Centraliza o conteúdo da página */
+}
+
+/* Ajuste para a navbar (barra de navegação) */
+.navbar {
+  margin-bottom: 20px; /* Espaço abaixo da navbar */
+}
+
+/* Estilo do card de perfil */
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+}
+
+/* Nome do usuário */
+.card-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.card-header p {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+/* Estilo dos botões */
+.card-body .btn {
+  font-size: 1.1rem;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+/* Ajustes de layout para as tabelas de eventos */
+.table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+/* Espaçamento entre as seções do card */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.section-content {
+  text-align: left;
+}

@@ -1,79 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eventx</title>
+  <title>Otneve </title>
   <!-- Adicionando Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./stylesheets/style.css">
- <style>
-   h1{
-     text-align:center;
-   }
-   .title-margin {
-    margin-top: 50px; 
-    margin-bottom: 40px; 
-  }
- </style>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <style>
+    /* Título principal alinhado à esquerda com espaçamento */
+    h3 {
+      text-align: left;
+      margin-left: 20px;
+    }
+
+    .title-margin {
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
+
+    /* Estilos para o slider */
+    h3 {
+      text-align: left;
+      margin-left: -2px;
+    }
+
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      height: 70vh;
+      /* A altura do slider */
+      display: flex;
+      justify-content: flex-start;
+      /* Alinha o conteúdo à esquerda */
+      align-items: center;
+      background-color: #f9f9f9;
+      /* Cor de fundo leve */
+      padding-left: 20px;
+      /* Adicionando um pequeno espaçamento à esquerda */
+    }
+
+    .slide {
+      display: none;
+      text-align: left;
+      padding: 40px;
+      background-color: #fff;
+      color: #003366;
+      transition: opacity 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide-content {
+      max-width: 600px;
+      /* Limite de largura para o conteúdo */
+      width: 100%;
+      /* Garante que ocupe toda a largura disponível */
+      padding: 20px;
+    }
+
+    /* Usar flexbox para alinhar título, descrição e botão na mesma linha */
+    .slide-content-wrapper {
+      display: flex;
+      /* Usando flexbox para alinhar os itens em uma linha */
+      flex-direction: column;
+      /* Os itens vão empilhar verticalmente */
+      justify-content: flex-start;
+      /* Alinha os itens na parte superior */
+    }
+
+    .event-title {
+      font-size: 3rem;
+      /* Tamanho grande para o título */
+      color: #003366;
+      font-weight: bold;
+      margin-bottom: 10px;
+      /* Espaço entre o título e a descrição */
+    }
+
+    .description {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 10px;
+      /* Espaço entre a descrição e o botão */
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+
+    .signup-link {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background-color: #1e90ff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      /* Pequeno espaçamento acima do botão */
+    }
+
+    .signup-link:hover {
+      background-color: #0e6bc9;
+      color: white;
+      text-decoration: none;
+    }
+
+
+    
+
+    .events-section h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #343a40;
+      margin-bottom: 40px;
+    }
+
+    /* Cartões dos eventos */
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-img-top {
+      border-radius: 10px 10px 0 0;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      text-align: center;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #003366;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+    
+    
+    /* Estilo do rodapé */
+    footer {
+      background-color: #042f5b;
+      color: white;
+      padding: 20px 0;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+  </style>
 </head>
+
 <body>
 
   <%- include('navbar.ejs') %>
-<main>
-  <div class="slide">
-    <h1>Título do Slide</h1>
-    <p class="description">Esta é uma breve descrição abaixo do título.</p>
-    <a href="#" class="signup-link">Inscreva-se</a>
-  </div>
- 
-<h1 class="title-margin">Nossos Eventos</h1>
-<div class="container">
-  <% for (let i = 0; i < events.length; i += 4) { %>
-    <div class="row">
-      <% for (let j = i; j < i + 4 && j < events.length; j++) { %>
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card h-100 shadow-sm">
-            <!-- Imagem de Capa do Evento -->
-            <img src="uploads/<%= events[j].coverImage %>" class="card-img-top" alt="Imagem de Capa do Evento" style="height: 200px; object-fit: cover;">
-            <div class="card-body d-flex flex-column">
-              <!-- Título do Evento -->
-              <h5 class="card-title"><%= events[j].title %></h5>
-              <!-- Tipo do Evento -->
-              <p class="card-text"><strong>Tipo:</strong> <%= events[j].type %></p>
-              
-              <!-- Data do Evento -->
-              <p class="card-text"><strong>Data:</strong> <%= events[j].date.toDateString() %></p>
-              <!-- Botão para mais detalhes -->
-              <div class="mt-auto">
-                <a href="/events/<%= events[j]._id %>" class="btn btn-primary">Detalhes</a>
-              </div>
-            </div>
+
+    <!-- Slide de Títulos -->
+    <div class="slider-container">
+      <% events.forEach((event, index)=> { %>
+        <div class="slide <%= index === 0 ? 'active' : '' %>">
+          <div class="slide-content">
+            <h3 class="event-title">
+              <%= event.title %>
+            </h3>
+            <p class="description">
+              <%= event.description %>
+            </p>
+            <a href="/events/<%= event._id %>" class="signup-link">Inscreva-se</a>
           </div>
         </div>
-      <% } %>
+        <% }) %>
     </div>
-  <% } %>
-</div>
-  
-</main>
-<footer class="footer" style="background-color: #042f5b;">
-  <div class="container">
-    <div class="row">
-      <div class="col text-center text-light">
-        <p>&copy; 2024 Seu Site. Todos os direitos reservados.</p>
+
+    <main>
+     <!-- Seção Sobre Nós -->
+<div class="sobre-nos">
+  <h2 class="titulo-sobre-nos text-center">Sobre Nós</h2><br>
+  <p class="text-center">Por que nos escolher?</p>
+
+  <div class="conteudo row justify-content-center align-items-center">
+    <!-- Coluna para a imagem -->
+    <div class="imagem col-md-4 mb-4 mb-md-0">
+      <img src="/img/grupo.jpg" alt="Descrição da imagem" class="img-fluid imagem-sobre">
+    </div>
+
+    <!-- Coluna para o texto -->
+    <div class="texto col-md-4 texto-sobre">
+      <h3 class="nome-projeto">Otneve</h3>
+      <p class="descricao">
+        Nossa missão é proporcionar uma experiência de aprendizado única, com qualidade, acessibilidade e inovação.
+        Contamos com uma equipe dedicada e experiente para garantir o sucesso de cada evento.
+      </p>
+      <p class="descricao">
+        Oferecemos conteúdos atualizados e relevantes, com profissionais altamente qualificados em suas áreas de atuação.
+        Cada evento é pensado para proporcionar o máximo de aprendizado prático e teórico.
+      </p>
+
+      <!-- Spans em retângulos pequenos -->
+      <div class="spans-container d-flex justify-content-between mt-3">
+        <span class="span-item">Eventos Online</span>
+        <span class="span-item">Eventos Presenciais</span>
+        <span class="span-item">Certificações</span>
       </div>
     </div>
   </div>
-</footer>
-
-<%- include('vlibras.ejs') %>
+</div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
+      <!-- Seção de Eventos -->
+      <div class="events-section">
+        <h1 class="text-center">Nossos Eventos</h1>
+        <div class="container">
+          <% for (let i=0; i < events.length; i +=3) { %>
+            <div class="row">
+              <% for (let j=i; j < i + 3 && j < events.length; j++) { %>
+                <div class="col-md-4 mb-4">
+                  <div class="card">
+                    <img src="uploads/<%= events[j].coverImage %>" class="card-img-top" alt="Imagem de Capa do Evento">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <%= events[j].title %>
+                      </h5>
+                      <p class="card-text"><strong>Tipo:</strong>
+                        <%= events[j].type %>
+                      </p>
+                      <p class="card-text"><strong>Data:</strong>
+                        <%= events[j].date.toLocaleDateString('pt-BR') %>
+                      </p>
+                      <a href="/events/<%= events[j]._id %>" class="btn btn-primary">Detalhes</a>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+      </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <p>&copy; 2024 Seu Site. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <%- include('vlibras.ejs') %>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+      <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+          slides[currentSlide].classList.remove('active');
+          currentSlide = (index + totalSlides) % totalSlides;
+          slides[currentSlide].classList.add('active');
+        }
+
+        // Função para trocar automaticamente os slides a cada 1 segundo
+        setInterval(() => {
+          showSlide(currentSlide + 1);
+        }, 9000);
+
+        // Iniciar o primeiro slide
+        showSlide(currentSlide);
+
+      </script>
 
 </body>
+
 </html>

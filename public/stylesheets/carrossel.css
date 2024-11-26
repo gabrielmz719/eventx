@@ -5,15 +5,18 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
-  color: #fff;
-  background: linear-gradient(135deg, rgb(150, 150, 150), #4a90e2);
-  animation: backgroundChange 6s infinite;
+  color: #000; /* Cor do texto preta */
+  background-color: #fff; /* Cor de fundo branca */
 }
+/* h1{
+  text-align: center;
+} */
 
-h1 {
+h3 {
   font-size: 3rem;
   text-transform: uppercase;
-  margin: 70px 0 0px 50px; /* Espaçamento entre o título e a descrição */
+  margin: 70px 0 0 50px; /* Espaçamento entre o título e a descrição */
+  color: #003366; /* Título azul escuro */
 }
 
 .description {
@@ -21,6 +24,7 @@ h1 {
   opacity: 0.8;
   margin-left: 50px; /* Alinha a descrição com o título */
   margin-bottom: 20px; /* Espaço entre a descrição e o botão */
+  color: #333; /* Cor da descrição em um cinza escuro */
 }
 
 .signup-link {
@@ -37,6 +41,70 @@ h1 {
 
 .signup-link:hover {
   background-color: #d04;
+}
+
+/* Título principal alinhado à esquerda com espaçamento */
+h3 {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.title-margin {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+/* Estilos para o slider */
+h3 {
+  text-align: left;
+  margin-left: -2px;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  height: 70vh;
+  /* A altura do slider */
+  display: flex;
+  justify-content: flex-start;
+  /* Alinha o conteúdo à esquerda */
+  align-items: center;
+  background-color: #f9f9f9;
+  /* Cor de fundo leve */
+  padding-left: 20px;
+  /* Adicionando um pequeno espaçamento à esquerda */
+}
+
+.slide {
+  display: none;
+  text-align: left;
+  padding: 40px;
+  background-color: #fff;
+  color: #003366;
+  transition: opacity 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide-content {
+  max-width: 600px;
+  /* Limite de largura para o conteúdo */
+  width: 100%;
+  /* Garante que ocupe toda a largura disponível */
+  padding: 20px;
+}
+
+/* Usar flexbox para alinhar título, descrição e botão na mesma linha */
+.slide-content-wrapper {
+  display: flex;
+  /* Usando flexbox para alinhar os itens em uma linha */
+  flex-direction: column;
+  /* Os itens vão empilhar verticalmente */
+  justify-content: flex-start;
+  /* Alinha os itens na parte superior */
 }
 
 @keyframes backgroundChange {

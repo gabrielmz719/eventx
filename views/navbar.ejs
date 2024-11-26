@@ -1,8 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #1E90FF;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: white;">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center mr-auto" href="/">
-      <span style="color: white; font-size: 1.5rem;">EventX</span> <!-- Aumentar o tamanho da fonte do texto -->
-
+      <span style="color: #003366; font-size: 1.5rem; font-weight: 700;">Otneve</span>
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,32 +9,49 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active mr-3">
-          <a class="nav-link" href="/" style="color: white; font-size: 1.2rem;">Inicio <span class="sr-only">(current)</span></a> <!-- Aumentar o tamanho da fonte do link -->
+          <a class="nav-link" href="/" style="color: #003366; font-size: 1.2rem; font-weight: 600;">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <% if (userId) { %>
           <li class="nav-item mr-3">
-            <a class="nav-link btn btn-primary btn-lg" href="/events/create" role="button" style="color: white; background-color: rgb(35, 250, 7);">Criar evento</a> <!-- Utilizar btn-lg para aumentar o tamanho do botão -->
+            <a class="nav-link btn btn-success btn-lg" href="/events/create" role="button" style="color: white; background-color: #4CAF50; font-weight: 600; border-radius: 5px; padding: 10px 20px;">Criar evento</a>
           </li>
           <li class="nav-item mr-3">
-            <a class="nav-link" href="/profile" style="color: white; font-size: 1.2rem;">Perfil</a> <!-- Aumentar o tamanho da fonte do link -->
+            <a class="nav-link" href="/profile" style="color: #003366; font-size: 1.2rem; font-weight: 600; border-radius: 5px; padding: 10px 20px;">Perfil</a>
           </li>
         <% } %>
 
-        
-
         <% if (userId) { %>
           <li class="nav-item mr-3">
-            <a class="nav-link" href="/logout" style="color: white; font-size: 1.2rem;">Sair</a> <!-- Aumentar o tamanho da fonte do link -->
+            <a class="nav-link" href="/logout" style="color: #003366; font-size: 1.2rem; font-weight: 600; border-radius: 5px; padding: 10px 20px;">Sair</a>
           </li>
         <% } else { %>
           <li class="nav-item mr-3">
-            <a class="nav-link" href="/users/register" style="color: white; font-size: 1.2rem;">Registrar</a> <!-- Aumentar o tamanho da fonte do link -->
+            <a class="nav-link" href="/users/register" style="color: #003366; font-size: 1.2rem; font-weight: 600; border-radius: 5px; padding: 10px 20px;">Registrar</a>
           </li>
         <% } %>
       </ul>
     </div>
   </div>
 </nav>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Adicione este CSS no seu arquivo de estilos -->
+<style>
+  .navbar-nav .nav-link {
+    transition: all 0.3s ease; /* Suaviza a transição de cor e fundo */
+    border-radius: 5px; /* Menos arredondado para links, mais quadrado */
+    padding: 8px 15px; /* Distância interna (paddings) para os links */
+  }
+
+  /* Efeito de hover - link fica verde claro com texto em branco */
+  .navbar-nav .nav-link:hover {
+    background-color: #66BB6A; /* Fundo verde claro */
+    color: white; /* Texto branco */
+    box-shadow: 0 0 3px rgba(40, 167, 69, 0.3); /* Brilho suave */
+  }
+
+  /* Efeito de hover no botão */
+  .navbar-nav .btn-success:hover {
+    background-color: #45a049; /* Cor do botão ao passar o mouse */
+    box-shadow: 0 0 3px rgba(40, 167, 69, 0.3); /* Brilho suave no botão */
+  }
+</style>

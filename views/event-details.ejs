@@ -38,7 +38,8 @@
             <h5 class="card-title"><%= event.title %></h5>
             <p class="card-text"><strong>Tipo:</strong> <%= event.type %></p>
             <p class="card-text"><strong>Descrição:</strong> <%= event.description %></p>
-            <p class="card-text"><strong>Data:</strong> <%= event.date.toDateString() %></p>
+            <p class="card-text"><strong>Data:</strong> <%= event.date.toLocaleDateString('pt-BR') %></p>
+
             <!-- <p class="card-text"><strong>Criado por:</strong> <%= event.organizer.name %></p>  -->
             
             <% if (userId) { %>

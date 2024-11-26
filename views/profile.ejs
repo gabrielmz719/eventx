@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,64 +8,188 @@
   <!-- Adicionando Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <style>
+    /* Estilos para o corpo da página */
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Arial', sans-serif;
+      
+    }
+
+    /* Estilo do card de perfil */
+    .card {
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+    }
+
+    /* Nome do usuário */
+    .card-header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #343a40;
+    }
+
+    .card-header p {
+      font-size: 1.2rem;
+      color: #6c757d;
+      margin-top: 10px;
+    }
+
+    /* Estilo dos botões */
+    .card-body .btn {
+      font-size: 1.1rem;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    .btn-info {
+      background-color: #17a2b8;
+      border-color: #17a2b8;
+    }
+
+    .btn-info:hover {
+      background-color: #138496;
+      border-color: #117a8b;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+      border-color: #bd2130;
+    }
+
+    /* Ajustes de layout para as tabelas de eventos */
+    .table th {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+    }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: #f2f2f2;
+    }
+
+    .table-striped tbody tr:nth-of-type(even) {
+      background-color: #ffffff;
+    }
+
+    /* Espaçamento entre as seções do card */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #343a40;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .section-content {
+      text-align: left;
+    }
+  </style>
 </head>
+
 <body>
+
   <%- include('navbar.ejs') %>
+
   <div class="container mt-5">
+    <!-- Card Principal -->
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="card">
+          <!-- Cabeçalho do Card (Nome do Usuário) -->
+          <div class="card-header">
+            <h1>Perfil de <%= user.username %></h1>
+            <p>Bem-vindo ao seu painel! Gerencie seus eventos e configurações abaixo.</p>
+          </div>
+
+          <!-- Corpo do Card (Ações e Eventos) -->
           <div class="card-body">
-            <h1 class="card-title">Perfil de <%= user.username %></h1>
-            <h2>Eventos Criados</h2>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Título do Evento</th>
-                  <th>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% userEvents.forEach(event => { %>
+            <!-- Botões de Ação -->
+            <div>
+              <a href="/events/create" class="btn btn-success">Criar Evento</a>
+              <form action="/logout" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger">Sair</button>
+              </form>
+            </div>
+
+            <!-- Seção de Eventos Criados -->
+            <div class="section-content mt-5">
+              <h2 class="section-title">Eventos Criados</h2>
+              <table class="table table-striped">
+                <thead>
                   <tr>
-                    <td><%= event.title %></td>
-                    <td>
-                      <a href="/events/<%= event._id %>" class="btn btn-info btn-sm">Ver Evento</a>
-                      <a href="/events/<%= event._id %>/edit" class="btn btn-primary btn-sm">Editar</a>
-                      <form action="/events/<%= event._id %>/delete" method="POST" style="display: inline;">
-                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                      </form>
-                    </td>
+                    <th>Título do Evento</th>
+                    <th>Ações</th>
                   </tr>
-                <% }); %>
-              </tbody>
-            </table>
-            <h2>Eventos Cadastrados</h2>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Título do Evento</th>
-                  <th>Link</th>
-                </tr>
-              </thead>
-              <tbody>
-                <% registeredEvents.forEach(event => { %>
+                </thead>
+                <tbody>
+                  <% userEvents.forEach(event => { %>
+                    <tr>
+                      <td><%= event.title %></td>
+                      <td>
+                        <a href="/events/<%= event._id %>" class="btn btn-info btn-sm">Ver Evento</a>
+                        <a href="/events/<%= event._id %>/edit" class="btn btn-primary btn-sm">Editar</a>
+                        <form action="/events/<%= event._id %>/delete" method="POST" style="display: inline;">
+                          <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                        </form>
+                      </td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Seção de Eventos Cadastrados -->
+            <div class="section-content mt-5">
+              <h2 class="section-title">Eventos Cadastrados</h2>
+              <table class="table table-striped">
+                <thead>
                   <tr>
-                    <td><%= event.title %></td>
-                    <td><a href="/events/<%= event._id %>" class="btn btn-info btn-sm">Ver Evento</a></td>
+                    <th>Título do Evento</th>
+                    <th>Link</th>
                   </tr>
-                <% }); %>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <% registeredEvents.forEach(event => { %>
+                    <tr>
+                      <td><%= event.title %></td>
+                      <td><a href="/events/<%= event._id %>" class="btn btn-info btn-sm">Ver Evento</a></td>
+                    </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <%- include('vlibras.ejs') %>
+
   <!-- Adicionando Bootstrap JS e dependências -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://maxcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>

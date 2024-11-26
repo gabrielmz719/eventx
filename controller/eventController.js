@@ -1,42 +1,51 @@
 const Event = require('../models/event');
 const path = require('path');
+const moment = require('moment');
 
 
 
 exports.createEvent = async (req, res) => {
   try {
-      const { title, type, description, date } = req.body;
+    const { title, type, description, date } = req.body;
 
-      // Verificar se o usuário está autenticado
-      if (!req.session.userId) {
-          return res.status(401).json({ message: 'Usuário não autenticado' });
-      }
+    // Verificar se a data do evento é válida
+    if (!date || moment(date).isBefore(moment(), 'minute')) {
+      return res.status(400).json({ message: 'A data do evento não pode ser anterior ao momento atual.' });
+    }
 
-      // Verificar se a imagem de capa foi enviada
-      if (!req.file) {
-          return res.status(400).json({ message: 'Imagem de capa não enviada' });
-      }
+    // Verificar se o usuário está autenticado
+    if (!req.session.userId) {
+      return res.status(401).json({ message: 'Usuário não autenticado' });
+    }
 
-      const coverImagePath = path.relative(path.join(__dirname, '..', 'public', 'uploads'), req.file.path);
-    
-      const organizer = req.session.userId;
+    // Verificar se a imagem de capa foi enviada
+    if (!req.file) {
+      return res.status(400).json({ message: 'Imagem de capa não enviada' });
+    }
 
-      const newEvent = new Event({
-          title,
-          type,
-          description,
-          date,
-          organizer,
-          coverImage: coverImagePath
-      });
-      await newEvent.save();
+    const coverImagePath = path.relative(path.join(__dirname, '..', 'public', 'uploads'), req.file.path);
+    const organizer = req.session.userId;
 
-      
-      res.redirect('/');
+    const newEvent = new Event({
+      title,
+      type,
+      description,
+      date,
+      organizer,
+      coverImage: coverImagePath
+    });
+
+    await newEvent.save();
+
+    // Redireciona para a página principal (ou para onde você quiser)
+    res.redirect('/'); // Aqui você pode mudar a URL de destino para onde achar melhor
+
   } catch (error) {
-      res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
+
+
 exports.getAllEvents = async (req, res) => {
   try {
     const events = await Event.find();
@@ -223,3 +232,23 @@ exports.renderCreateEventPage = (req, res) => {
 
   res.render('create-event', { userId: userId });
 };
+
+async function deleteExpiredEvents() {
+  try {
+      // Encontre todos os eventos cuja data já tenha passado
+      const expiredEvents = await Event.find({ date: { $lt: moment() } });
+
+      // Se houver eventos vencidos, exclua-os
+      if (expiredEvents.length > 0) {
+          await Event.deleteMany({ date: { $lt: moment() } });
+          console.log(`${expiredEvents.length} eventos vencidos excluídos.`);
+      } else {
+          console.log('Nenhum evento vencido encontrado.');
+      }
+  } catch (error) {
+      console.error('Erro ao excluir eventos vencidos:', error.message);
+  }
+}
+
+deleteExpiredEvents();
+
