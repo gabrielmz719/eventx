@@ -1,10 +1,120 @@
-.carousel{
-    margin: 30px 0 30px 0;
+.slide {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  color: #000; /* Cor do texto preta */
+  background-color: #fff; /* Cor de fundo branca */
 }
-.carousel-item img {
-    max-height: 300px; 
-    object-fit: cover; 
+/* h1{
+  text-align: center;
+} */
+
+h3 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin: 70px 0 0 50px; /* Espaçamento entre o título e a descrição */
+  color: #003366; /* Título azul escuro */
+}
+
+.description {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  margin-left: 50px; /* Alinha a descrição com o título */
+  margin-bottom: 20px; /* Espaço entre a descrição e o botão */
+  color: #333; /* Cor da descrição em um cinza escuro */
+}
+
+.signup-link {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #f06;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-left: 50px; /* Alinha o botão com o título */
+}
+
+.signup-link:hover {
+  background-color: #d04;
+}
+
+/* Título principal alinhado à esquerda com espaçamento */
+h3 {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.title-margin {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+/* Estilos para o slider */
+h3 {
+  text-align: left;
+  margin-left: -2px;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  height: 70vh;
+  /* A altura do slider */
+  display: flex;
+  justify-content: flex-start;
+  /* Alinha o conteúdo à esquerda */
+  align-items: center;
+  background-color: #f9f9f9;
+  /* Cor de fundo leve */
+  padding-left: 20px;
+  /* Adicionando um pequeno espaçamento à esquerda */
+}
+
+.slide {
+  display: none;
+  text-align: left;
+  padding: 40px;
+  background-color: #fff;
+  color: #003366;
+  transition: opacity 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide-content {
+  max-width: 600px;
+  /* Limite de largura para o conteúdo */
+  width: 100%;
+  /* Garante que ocupe toda a largura disponível */
+  padding: 20px;
+}
+
+/* Usar flexbox para alinhar título, descrição e botão na mesma linha */
+.slide-content-wrapper {
+  display: flex;
+  /* Usando flexbox para alinhar os itens em uma linha */
+  flex-direction: column;
+  /* Os itens vão empilhar verticalmente */
+  justify-content: flex-start;
+  /* Alinha os itens na parte superior */
+}
+
+@keyframes backgroundChange {
+  0% {
+    background: linear-gradient(135deg, rgb(111, 111, 111), #4a90e2);
   }
-  #carouselExampleIndicators {
-    max-height: 300px; 
+  50% {
+    background: linear-gradient(135deg, #4a90e2, #f06);
   }
+  100% {
+    background: linear-gradient(135deg, #f06, #4a90e2);
+  }
+}

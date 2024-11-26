@@ -1,0 +1,105 @@
+/* Estilização para a seção de eventos */
+.events-section {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+/* Centraliza o título */
+.events-section h1 {
+    text-align: center;
+    font-size: 2.5em; /* Aumentando o tamanho do título */
+    margin-bottom: 40px;
+}
+
+/* Configurações para o container */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Maior espaçamento entre os cards */
+    justify-content: center;
+}
+
+/* Configurações para os itens (cards) */
+.card-wrapper {
+    width: 30vw; /* Definindo a largura do card com base na largura da viewport */
+    height: 30vw; /* Mantendo a altura igual à largura para garantir que os cards sejam quadrados */
+    display: flex;
+    justify-content: center; /* Centraliza os cards horizontalmente */
+}
+
+/* Estilo do card */
+.card {
+    width: 100%; /* Largura total do card */
+    height: 100%; /* Altura total do card */
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 10px;
+}
+
+/* Imagem dos cards */
+.card-img-top {
+    width: 100%;
+    height: 50%; /* A altura da imagem será metade do card */
+    object-fit: cover; /* Faz a imagem cobrir todo o espaço disponível */
+    border-radius: 8px;
+}
+
+/* Estilização do corpo do card */
+.card-body {
+    flex-grow: 1;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Título do card */
+.card-title {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Texto do card */
+.card-text {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+/* Botão */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito no botão ao passar o mouse */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .card-wrapper {
+        width: 45vw; /* 2 cards por linha em telas menores */
+        height: 45vw; /* Ajusta a altura para manter os cards quadrados */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-wrapper {
+        width: 90vw; /* 1 card por linha em telas muito pequenas */
+        height: 90vw; /* Ajusta a altura para manter os cards quadrados */
+    }
+}

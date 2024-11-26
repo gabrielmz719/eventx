@@ -1,5 +1,302 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 @import './carrossel.css';
 @import './perfil.css';
 @import './create.css';
+@import './sobre.css';
+@import './cards.css';
+/* Estilo para a seção Sobre Nós */
+.sobre-nos {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  background-color: #e8e8ef;
+}
+
+/* Título da seção "Sobre Nós" */
+.sobre-nos h2 {
+  color: #00db50; /* Verde Claro */
+  font-size: 3 rem;
+  font-weight: bold;
+  margin-bottom: 40px; /* Mais espaçamento abaixo do título */
+}
+
+.texto2{
+  color: #003366; /* Verde Claro */
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px; /* Mais espaçamento abaixo do título */
+}
+
+/* Container de conteúdo */
+.conteudo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20%; /* Espaço entre a imagem e o texto */
+}
+
+/* Coluna para a imagem */
+.imagem {
+  flex: 1;
+  max-width: 400px; /* Limite para a largura da imagem */
+  padding: 10px;
+}
+
+.imagem img {
+  width: 20vw;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover; /* Ajuste a imagem sem distorção */
+  height: 60vh; /* Imagem maior */
+}
+
+/* Coluna para o texto */
+.texto {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+}
+
+/* Título do projeto Otneve */
+.texto h3 {
+  color: #003366; /* Azul Escuro */
+  font-size: 3rem; /* Tamanho grande */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Parágrafos de descrição */
+.texto p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Spans em retângulos pequenos */
+.spans-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.span-item {
+  background-color: #f0f0f0;
+  padding: 8px 16px;
+  border-radius: 5px;
+  color: #333;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+  margin: 0 5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 767px) {
+  .conteudo {
+      flex-direction: column; /* Coloca imagem e texto em colunas empilhadas */
+      align-items: center;
+  }
+
+  .imagem,
+  .texto {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  .spans-container {
+      flex-direction: column;
+  }
+
+  .span-item {
+      margin-bottom: 10px;
+  }
+}
+
+/* Título principal alinhado à esquerda com espaçamento */
+h3 {
+  text-align: left;
+  margin-left: 20px;
+}
+
+.title-margin {
+  margin-top: 50px;
+  margin-bottom: 40px;
+}
+
+/* Estilos para o slider */
+h3 {
+  text-align: left;
+  margin-left: -2px;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  height: 70vh;
+  /* A altura do slider */
+  display: flex;
+  justify-content: flex-start;
+  /* Alinha o conteúdo à esquerda */
+  align-items: center;
+  background-color: #f9f9f9;
+  /* Cor de fundo leve */
+  padding-left: 20px;
+  /* Adicionando um pequeno espaçamento à esquerda */
+}
+
+.slide {
+  display: none;
+  text-align: left;
+  padding: 40px;
+  background-color: #fff;
+  color: #003366;
+  transition: opacity 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide-content {
+  max-width: 600px;
+  /* Limite de largura para o conteúdo */
+  width: 100%;
+  /* Garante que ocupe toda a largura disponível */
+  padding: 20px;
+}
+
+/* Usar flexbox para alinhar título, descrição e botão na mesma linha */
+.slide-content-wrapper {
+  display: flex;
+  /* Usando flexbox para alinhar os itens em uma linha */
+  flex-direction: column;
+  /* Os itens vão empilhar verticalmente */
+  justify-content: flex-start;
+  /* Alinha os itens na parte superior */
+}
+
+.event-title {
+  font-size: 3rem;
+  /* Tamanho grande para o título */
+  color: #003366;
+  font-weight: bold;
+  margin-bottom: 10px;
+  /* Espaço entre o título e a descrição */
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+  /* Espaço entre a descrição e o botão */
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.signup-link {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #1e90ff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  /* Pequeno espaçamento acima do botão */
+}
+
+.signup-link:hover {
+  background-color: #0e6bc9;
+  color: white;
+  text-decoration: none;
+}
+
+
+
+
+.events-section h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #343a40;
+  margin-bottom: 40px;
+}
+
+/* Cartões dos eventos */
+.card {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-img-top {
+  border-radius: 10px 10px 0 0;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #003366;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+.nossos-eventos{
+  font-size: 2rem;
+  font-weight: bold;
+  color: #003366;
+}
+
+
+/* Estilo do rodapé */
+footer {
+  background-color: #042f5b;
+  color: white;
+  padding: 20px 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1rem;
+}
+
 
 
