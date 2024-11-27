@@ -6,71 +6,89 @@
   <title>Login</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <link rel="stylesheet" href="/stylesheets/style.css"> 
   <style>
-    /* Estilos adicionais personalizados */
-    body {
-      padding: 20px;
-      background-color: #f8f9fa;
-    }
+   body {
+  padding: 0px;
+  background-color: #f8f9fa;
+}
 
-    h2 {
-      color: #003366;
-      font-weight: bold;
-    }
+h2 {
+  color: #003366;
+  font-weight: bold;
+}
 
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-height: 400px; /* Definindo uma altura mínima maior */
+  box-sizing: border-box; /* Inclui o padding e a borda nas dimensões do form */
+}
 
-    .form-group label {
-      font-weight: bold;
-      color: #333;
-    }
+.form-group label {
+  font-weight: bold;
+  color: #333;
+}
 
-    .form-control {
-      border-radius: 5px;
-      box-shadow: none;
-      transition: all 0.3s ease;
-    }
+.form-control {
+  border-radius: 5px;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
 
-    .form-control:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
-    }
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
 
-    .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
-      font-weight: bold;
-      padding: 10px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
 
-    .btn-primary:hover {
-      background-color: #0056b3;
-      border-color: #004085;
-    }
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
 
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 0.9rem;
-    }
 
-    @media (max-width: 768px) {
-      form {
-        width: 90%;
-      }
-    }
+/* Ajuste de responsividade para telas menores (iPhone, etc) */
+@media (min-width: 480px) {
+  form {
+    width: 90%; /* Ajusta a largura do formulário */
+    min-height: 450px; /* Aumenta a altura mínima do formulário */
+    padding: 15px; /* Ajusta o padding para telas menores */
+  }
+
+  .form-group label {
+    font-size: 1rem; /* Ajuste do tamanho da fonte */
+  }
+
+  .form-control {
+    font-size: 1rem; /* Ajuste do tamanho da fonte nos campos */
+  }
+
+  .btn-primary {
+    font-size: 1rem; /* Ajusta o tamanho do botão */
+    padding: 12px; /* Ajuste no padding para maior conforto */
+  }
+}
+
+
   </style>
+  
 </head>
 <body>
+  <%- include('navbar.ejs') %>
 
   <h2 class="text-center mb-4">Login</h2>
 
@@ -92,10 +110,7 @@
     <p>Ainda não tem uma conta? <a href="/users/register">Crie a sua agora!</a></p>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>&copy; 2024 Seu Site. Todos os direitos reservados.</p>
-  </footer>
+  <%- include('footer.ejs') %>
 
   <%- include('vlibras.ejs') %>
 

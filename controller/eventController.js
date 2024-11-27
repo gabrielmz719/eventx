@@ -249,6 +249,23 @@ async function deleteExpiredEvents() {
       console.error('Erro ao excluir eventos vencidos:', error.message);
   }
 }
+exports.searchEvents = async (req, res) => {
+  try {
+    const { query } = req.query; // Recebe o termo de pesquisa da query string
+    if (!query) {
+      return res.status(400).json({ message: 'Por favor, forneça um termo de pesquisa.' });
+    }
+
+    // Realiza a pesquisa no banco de dados
+    const events = await Event.find({
+      title: { $regex: query, $options: 'i' } // Pesquisa insensível a maiúsculas/minúsculas
+    });
+
+    res.status(200).json(events); // Retorna os eventos encontrados
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
 deleteExpiredEvents();
 
