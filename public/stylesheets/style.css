@@ -12,6 +12,7 @@
 @import './create.css';
 @import './sobre.css';
 @import './cards.css';
+@import './login.css';
 /* Estilo para a seção Sobre Nós */
 .sobre-nos {
   width: 100%;
@@ -105,24 +106,37 @@
 }
 
 /* Responsividade para telas menores */
-@media (max-width: 767px) {
+@media (max-width: 400px) {
   .conteudo {
-      flex-direction: column; /* Coloca imagem e texto em colunas empilhadas */
-      align-items: center;
+    display: flex;
+    flex-direction: column; /* Coloca imagem e texto em colunas empilhadas */
+    align-items: center;
+    width: 100%; /* Garantir que o contêiner tenha 100% de largura */
+    padding: 0 10px; /* Adiciona padding nas laterais */
   }
 
-  .imagem,
+
+  .imagem img {
+    width: 60vw;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover; /* Ajuste a imagem sem distorção */
+    height: 60vh; /* Imagem maior */
+  }
   .texto {
-      width: 100%;
-      margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    object-fit: cover; /* Caso a imagem deva cobrir o espaço sem distorcer */
   }
 
   .spans-container {
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Certificar que o container também tem largura 100% */
   }
 
   .span-item {
-      margin-bottom: 10px;
+    margin-bottom: 10px;
   }
 }
 
@@ -286,17 +300,61 @@ h3 {
 }
 
 
-/* Estilo do rodapé */
-footer {
-  background-color: #042f5b;
+/* Estilo do footer */
+.footer {
+  background-color: #003366;
   color: white;
-  padding: 20px 0;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-footer p {
-  margin: 0;
-  font-size: 1rem;
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
+.footer-section {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.footer-section h5 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #66BB6A; /* Verde claro para hover */
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
 
 
 

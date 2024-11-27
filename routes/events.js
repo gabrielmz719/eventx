@@ -188,5 +188,6 @@ router.post('/:id/generate-certificates', async (req, res) => {
     res.status(500).send('Erro ao gerar os certificados');
   }
 });
+router.get('/search', EventController.searchEvents);
 
 module.exports = router;

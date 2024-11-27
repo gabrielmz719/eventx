@@ -9,6 +9,51 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+<style>
+  /* Estilo geral da barra de pesquisa */
+  .barra-pesquisa {
+    display: flex;
+    /* Usando flexbox para alinhar o input e o botão */
+    justify-content: center;
+    /* Centraliza a barra na tela */
+    align-items: center;
+    margin: 20px;
+  }
+
+  /* Estilo do campo de texto */
+  .barra-pesquisa input {
+    width: 300px;
+    /* Largura do campo de pesquisa */
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  /* Estilo do botão */
+  .barra-pesquisa button {
+    padding: 10px;
+    margin-left: 10px;
+    /* Espaço entre o campo de texto e o botão */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+  }
+
+  /* Estilo de foco no campo de texto */
+  .barra-pesquisa input:focus {
+    border-color: #007bff;
+  }
+
+  /* Estilo de hover no botão */
+  .barra-pesquisa button:hover {
+    background-color: #0056b3;
+  }
+</style>
 
 <body>
 
@@ -32,45 +77,59 @@
     </div>
 
     <main>
-     <!-- Seção Sobre Nós -->
-<div class="sobre-nos">
-  <h2 class="titulo-sobre-nos text-center">Sobre Nós</h2><br>
-  <p class="text-center texto2">Por que nos escolher?</p>
+      <!-- Seção Sobre Nós -->
+      <div class="sobre-nos">
+        <h2 class="titulo-sobre-nos text-center">Sobre Nós</h2><br>
+        <p class="text-center texto2">Por que nos escolher?</p>
 
-  <div class="conteudo row justify-content-center align-items-center">
-    <!-- Coluna para a imagem -->
-    <div class="imagem col-md-4 mb-4 mb-md-0">
-      <img src="/img/grupo.jpg" alt="Descrição da imagem" class="img-fluid imagem-sobre">
-    </div>
+        <div class="conteudo row justify-content-center align-items-center">
+          <!-- Coluna para a imagem -->
+          <div class="imagem col-md-4 mb-4 mb-md-0">
+            <img src="/img/grupo.jpg" alt="Descrição da imagem" class="img-fluid imagem-sobre">
+          </div>
 
-    <!-- Coluna para o texto -->
-    <div class="texto col-md-4 texto-sobre">
-      <h3 class="nome-projeto">Otneve</h3>
-      <p class="descricao">
-        Nossa missão é proporcionar uma experiência de aprendizado única, com qualidade, acessibilidade e inovação.
-        Contamos com uma equipe dedicada e experiente para garantir o sucesso de cada evento.
-      </p>
-      <p class="descricao">
-        Oferecemos conteúdos atualizados e relevantes, com profissionais altamente qualificados em suas áreas de atuação.
-        Cada evento é pensado para proporcionar o máximo de aprendizado prático e teórico.
-      </p>
+          <!-- Coluna para o texto -->
+          <div class="texto col-md-4 texto-sobre">
+            <h3 class="nome-projeto">Otneve</h3>
+            <p class="descricao">
+              Nossa missão é proporcionar uma experiência de aprendizado única, com qualidade, acessibilidade e
+              inovação.
+              Contamos com uma equipe dedicada e experiente para garantir o sucesso de cada evento.
+            </p>
+            <p class="descricao">
+              Oferecemos conteúdos atualizados e relevantes, com profissionais altamente qualificados em suas áreas de
+              atuação.
+              Cada evento é pensado para proporcionar o máximo de aprendizado prático e teórico.
+            </p>
 
-      <!-- Spans em retângulos pequenos -->
-      <div class="spans-container d-flex justify-content-between mt-3">
-        <span class="span-item">Eventos Online</span>
-        <span class="span-item">Eventos Presenciais</span>
-        <span class="span-item">Certificações</span>
+            <!-- Spans em retângulos pequenos -->
+            <div class="spans-container d-flex justify-content-between mt-3">
+              <span class="span-item">Eventos Online</span>
+              <span class="span-item">Eventos Presenciais</span>
+              <span class="span-item">Certificações</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
 
 
 
-      <!-- Seção de Eventos -->
+      <!-- Seção de Eventos
       <div class="events-section">
+        <div class="barra-pesquisa">
+          <input type="text" id="search" placeholder="Pesquisar..." aria-label="Pesquisar">
+          <button id="search-btn" onclick="pesquisar()">🔍</button>
+        </div> -->
+
+
+
         <p class="text-center nossos-eventos">Mais Populares</p>
+
+        <!-- Container onde os resultados de pesquisa irão aparecer -->
+        <div id="search-results"></div>
+
+
         <div class="container">
           <% for (let i=0; i < events.length; i +=3) { %>
             <div class="row">
@@ -99,43 +158,35 @@
       </div>
     </main>
 
-    <!-- Rodapé -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col text-center">
-            <p>&copy; 2024 Seu Site. Todos os direitos reservados.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <%- include('footer.ejs') %>
 
-    <%- include('vlibras.ejs') %>
+      <%- include('vlibras.ejs') %>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-      <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
+        <script>
+          let currentSlide = 0;
+          const slides = document.querySelectorAll('.slide');
+          const totalSlides = slides.length;
 
-        function showSlide(index) {
-          slides[currentSlide].classList.remove('active');
-          currentSlide = (index + totalSlides) % totalSlides;
-          slides[currentSlide].classList.add('active');
-        }
+          function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+          }
 
-        // Função para trocar automaticamente os slides a cada 1 segundo
-        setInterval(() => {
-          showSlide(currentSlide + 1);
-        }, 9000);
+          // Função para trocar automaticamente os slides a cada 1 segundo
+          setInterval(() => {
+            showSlide(currentSlide + 1);
+          }, 9000);
 
-        // Iniciar o primeiro slide
-        showSlide(currentSlide);
+          // Iniciar o primeiro slide
+          showSlide(currentSlide);
 
-      </script>
+        </script>
+        <script src="js/search.js"></script>
 
 </body>
 
